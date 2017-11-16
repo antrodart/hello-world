@@ -1,0 +1,28 @@
+cuando me arrepiento de un cambio, hacemos un git revert (cuando el cambio ya está publicado en el repositorio)
+
+El git push -force es "ilegal", no debemos usarlo nunca.
+
+Solo se puede enmendar un commit cuando no está publicado, con git commit -ammend (después de hacerle git add al fichero cambiado).
+Si intentamos enmendar un commit que ya está publicado, no nos deja (mensaje de error REJECTED).
+
+Un conflicto se va a dar en git cuando dos desarrolladores modifiquen líneas de código aledañas. Esto se evita intentando que cada desarrollador toque diferentes lugares del código. Los conflictos, una vez dados, se solucionan de forma difícil. Básicamente tenemos 2 partes, la versión que tenemos en local y la que está subida en github. 
+Cuando intento hacer push a un repositorio desactualizado, sin estar a la última del repositorio publicado, 
+git pull --rebase
+Este comando lo que hace es, los cambios que hemos hecho en local desincronizados los pone en una pila temporal, se trae del repositorio el contenido actualizado, y trae los ficheros de la pila a local. Y se ven si hay conflictos (si se han tocado en las mismas lineas) Y entonces tiene que intervenir el usuario. Git nos dice, ¿con qué me quedo? Cuando elegimos con que nos quedamos, volvemos a hacer git add del documento, y escribimos git rebase --con para que continue con el rebase (para que termine). Entonces si ya esta solucionado podemos hacer el git push.
+
+Es una buena práctica antes de hacer un git push hacer siempre un git pull --rebase.
+
+No es una buena costumbre añadir muchos espacios o intros al documento ya que añades ruido. El git diff HEAD es sensible a estos cambios.
+
+El git status nos da información del estado del repositorio
+
+Con "git branch -a" podemos ver cuantas ramas tenemos.
+
+Crear una rama: git branch "nombredelarama"
+Para cambiar a una rama: git checkout "nombredelarama"
+Para publicar una rama (creo que ya la había creado antes) lo hace con git push origin "nombre de la rama" y no con git push origin master.
+Para traernos los cambios de X a master, nos vamos a la rama master y hacemos git merge "nombredelarama"
+
+Para borrar la rama Y, git push origin y (para publicarla) y para borrarla (¿(merge)?)
+
+
